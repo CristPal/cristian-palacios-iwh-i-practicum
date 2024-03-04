@@ -11,10 +11,18 @@ html
                 input(type='text', name='name', id='name')
             div
                 label(for='role') Role:
-                input(type='text', name='role', id='role')
+                select(name='role', id='role')
+                    option(value="Bomber") Bomber
+                    option(value="Air superiority") Air Superiority
+                    option(value="Reconnaissance") Reconnaissance
             div
                 label(for='mission') Mission:
-                input(type='text', name='mission', id='mission')
+                select(name='mission', id='mission')
+                     option(value='Operation Dessert Storm') Operation Dessert Storm
+                     option(value='Gulf War') Gulf War
+                     option(value='Yemen Civil War') Yemen Civil War
+                     option(value='Syria Civil War') Syria Civil War
+                     option(value='Operation Iraqi Freedom') Operation Iraqi Freedom
             div
                 button(type='submit') Submit
 

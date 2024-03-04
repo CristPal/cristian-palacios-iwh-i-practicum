@@ -8,6 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 // * Please DO NOT INCLUDE the private app access token in your repo. Don't do this practicum in your normal account.
 const PRIVATE_APP_ACCESS = process.env.PRIVATE_APP_TOKEN
 
@@ -41,7 +42,6 @@ app.get('/', async (req, res) => {
 app.get('/update-cobj', async (req, res) => {
 
     res.render('updates');      
-    
 
 })
 
@@ -52,9 +52,33 @@ app.get('/update-cobj', async (req, res) => {
 
 app.post('/update-cobj', async (req,res) => {
 
-    
+    const { name, role, mission } = req.body;
+    const hubspotUrl = 'https://api.hubapi.com/crm/v3/objects/2-25156322/'; 
 
-})
+    const data = {
+        properties: {
+            name, 
+            role, 
+            mission
+        }
+    };
+
+    try {
+        const response = await axios.post(hubspotUrl, data, {
+            headers: {
+                'Authorization': `Bearer ${PRIVATE_APP_ACCESS}`,    
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('request enviada')
+        res.redirect('/'); 
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error)
+    }
+
+});
+
 
 
 /** 
