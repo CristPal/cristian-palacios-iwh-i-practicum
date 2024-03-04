@@ -1,0 +1,21 @@
+html 
+    head 
+        title= `${title}`
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body    
+        h1 Update Form for Fighter Jets 
+        form(method='POST', action='http://localhost:3000/update-cobj')
+            div
+                label(for='name') Name:
+                input(type='text', name='name', id='name')
+            div
+                label(for='role') Role:
+                input(type='text', name='role', id='role')
+            div
+                label(for='mission') Mission:
+                input(type='text', name='mission', id='mission')
+            div
+                button(type='submit') Submit
+
+        a(href='http://localhost:3000/') Return to the homepage
