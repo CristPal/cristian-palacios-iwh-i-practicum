@@ -18,7 +18,7 @@ const PRIVATE_APP_ACCESS = process.env.PRIVATE_APP_TOKEN
 
 app.get('/', async (req, res) => {
 
-    const getUrl = 'https://api.hubapi.com/crm/v3/objects/2-25156322?properties=name,role'
+    const getUrl = 'https://api.hubapi.com/crm/v3/objects/2-25156322?properties=name,role,mission'
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ app.get('/', async (req, res) => {
     try {
         const resp = await axios.get(getUrl, { headers });
         const data = resp.data.results;
-        res.render('home', { title: 'Fighter Jet Data | HubSpot APIs', data });      
+        res.render('home', { title: 'Fighter Jet Data | HubSpot APIs', results: data });      
     } catch (error) {
         console.error(error);
     }
@@ -59,7 +59,7 @@ app.post('/update-cobj', async (req,res) => {
         properties: {
             name, 
             role, 
-            mission
+            mission,
         }
     };
 

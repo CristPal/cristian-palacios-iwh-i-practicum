@@ -4,6 +4,17 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/css/style.css")
     body    
-        h1 Fighter Jets 
+        h1 Custom Objects Table - Fighter Jets 
         a(href='http://localhost:3000/update-cobj') Create Figther Jet or Update Data 
-        texto=`${JSON.stringify(data)}`
+        table 
+            thead 
+                tr  
+                    th Name     
+                    th Role 
+                    th Mission
+            tbody 
+                each item in results
+                    tr  
+                        td=item.properties.name 
+                        td=item.properties.role 
+                        td=item.properties.mission 
